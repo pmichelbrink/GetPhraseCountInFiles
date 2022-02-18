@@ -1,0 +1,46 @@
+﻿<Window x:Class="GetPhraseCountInFiles.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GetPhraseCountInFiles"
+        mc:Ignorable="d" Name="GetPhraseCountInFilesWindows" PreviewKeyUp="GetPhraseCountInFilesWindows_KeyUp"
+        Title="Get Phrase Count In Files" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Margin="5,5,5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label VerticalContentAlignment="Bottom">Phrase:</Label>
+            <TextBox Grid.Column="1" x:Name="txtSearchPhrase" MinWidth="200" Height="20" VerticalContentAlignment="Bottom"></TextBox>
+            <Label Grid.Column="2" VerticalContentAlignment="Bottom">Search Path:</Label>
+            <TextBox x:Name="txtSearchPath" Grid.Column="3" MinWidth="200" Height="20" VerticalContentAlignment="Bottom"></TextBox>
+            <Button x:Name="btnPathBrowse" Grid.Column="4" Margin="5,0" Padding="5,0" Height="20" Click="btnPathBrowse_Click">...</Button>
+            <Button x:Name="btnSearch" IsDefault="True" Grid.Column="5" Margin="5,0" Padding="5,0" Height="20" Click="btnSearch_Click">Search</Button>
+            <Button x:Name="btnCancel" IsCancel="True" Grid.Column="6" Margin="5,0" Padding="5,0" Height="20" Click="btnCancel_Click">Cancel</Button>
+        </Grid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Label Margin="5">Files Searched:</Label>
+            <TextBlock Margin="5,10" Name="txtFileCount"></TextBlock>
+            <Label Margin="5">Phrase Count:</Label>
+            <TextBlock Margin="5,10" Name="txtPhraseCount"></TextBlock>
+        </StackPanel>
+        <Label Grid.Row="2" Margin="5,5,5,0">Search phrase found in:</Label>
+
+        <ListBox x:Name="lstFiles" Grid.Row="3" Margin="10,0,10,5" MaxHeight="500" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Files}" MouseDoubleClick="lstFiles_MouseDoubleClick"></ListBox>
+        
+    </Grid>
+</Window>
